@@ -1,0 +1,78 @@
+#ifndef SCOREBOARD_H
+#define SCOREBOARD_H
+
+class OfficialScorer;
+
+class ScoreBoard
+{
+
+public:
+    ScoreBoard();
+    ~ScoreBoard();
+
+    friend OfficialScorer;
+
+    /**
+     * Return ScoreBoard's strike count value.
+     *
+     * @return strike count value of Score Board.
+     */
+    unsigned short getStrikeCount() const;
+
+    /**
+     * Return ScoreBoard's ball count value
+     *
+     * @return ball count value of Score Board.
+     */
+    unsigned short getBallCount() const;
+
+    /**
+     * Return ScoreBoard's hits count value.
+     *
+     * @return hits count value of Score Board.
+     */
+    unsigned short getHitsCount() const;
+
+    /**
+     * Return ScoreBoard's out count value.
+     *
+     * @return out count value of Score Board.
+     */
+    unsigned short getOutCount() const;
+
+private:
+    unsigned short m_nStrikeCount;
+    unsigned short m_nBallCount;
+    unsigned short m_nHitsCount;
+    unsigned short m_nOutCount;
+
+    /**
+     * Set ScoreBoard's strike count value
+     *
+     * @param strikeCount for ScoreBoard's strike count.
+     */
+    void setStrikeCount(const unsigned short strikeCount);
+
+    /**
+     * Set ScoreBoard's ball count value
+     *
+     * @param ballCount for ScoreBoard's ball count.
+     */
+    void setBallCount(const unsigned short ballCount);
+
+    /**
+     * Set ScoreBoard's hits count value
+     *
+     * @param hitsCount for ScoreBoard's hits count.
+     */
+    void setHitsCount(const unsigned short hitsCount);
+
+    /**
+     * Set ScoreBoard's out count value
+     *
+     * @param outCount for ScoreBoard's out count.
+     */
+    void setOutCount(const unsigned short outCount);
+};
+
+#endif // SCOREBOARD_H
