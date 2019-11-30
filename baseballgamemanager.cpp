@@ -9,8 +9,7 @@
 
 #include <iostream>
 
-#define MAXIMUM_STRIKE_COUNT 2
-#define MAXIMUM_BALL_COUNT 3
+#define MAXIMUM_OUT_COUNT 2
 
 BaseballGameManager::BaseballGameManager()
 {
@@ -30,17 +29,45 @@ BaseballGameManager::~BaseballGameManager()
 
 void BaseballGameManager::startGame()
 {
-    //Todo: Implement logic to process sequence described in requirement.
+    std::cout << "신나는 야구 게임!" << std::endl;
+    std::cout << "첫번째 타자가 입장하였습니다." << std::endl;
+
+    while ( false == isGameEnd(m_pScoreBoard->getOutCount()) ) {
+        playInning();
+    }
+
+    m_pStatusPrinter->showGameEndComment(m_pScoreBoard->getHitsCount());
 }
 
 void BaseballGameManager::playInning()
 {
-    //Todo: Implement logic to process one inning.
+    PitchingResult pitchResult = m_pPitchingResultGenerator->generatePitchingResult();
+
+    m_pStatusPrinter->showPitchingResult(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(),
+                                         pitchResult);
+
+
+    bool bEndTheAtBat = m_pOfficialScorer->calculatePitchingResult(pitchResult);
+
+    if ( (true == bEndTheAtBat ) && (false == isGameEnd(m_pScoreBoard->getOutCount())) ) {
+        m_pStatusPrinter->showNextBatter();
+    }
+
+    m_pStatusPrinter->showScoreBoard(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), m_pScoreBoard->getOutCount());
 }
 
 bool BaseballGameManager::isGameEnd(unsigned short outCount)
 {
-    //Todo: 1. Implement logic to determine whether the game is over and 2. return the result
+    bool result = false;
 
-    return true;
+    if ( MAXIMUM_OUT_COUNT < outCount )
+    {
+        result = true;
+    }
+    else
+    {
+        result = false;
+    }
+
+    return result;
 }
