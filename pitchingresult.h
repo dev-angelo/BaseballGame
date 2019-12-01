@@ -9,4 +9,10 @@ enum class PitchingResult
     OUT
 };
 
+enum class SBMaximumCount
+{
+    THREE_STRIKE = 3,
+    FOUR_BALL
+};
+
 #endif // PITCHINGRESULT_H
