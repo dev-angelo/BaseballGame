@@ -16,40 +16,40 @@ ScoreBoard::~ScoreBoard()
 
 void ScoreBoard::setStrikeCount(const unsigned short strikeCount)
 {
-    //Todo: Set m_nStrikeCount to the value of a parameter
+    m_nStrikeCount = strikeCount;
 }
 
 void ScoreBoard::setBallCount(const unsigned short ballCount)
 {
-    //Todo: Set m_nBallCount to the value of a parameter
+    m_nBallCount = ballCount;
 }
 
 void ScoreBoard::setHitsCount(const unsigned short hitsCount)
 {
-    //Todo: Set m_nHitsCount to the value of a parameter
+    m_nHitsCount = hitsCount;
 }
 
 void ScoreBoard::setOutCount(const unsigned short outCount)
 {
-    //Todo: Set m_nOutCount to the value of a parameter
+    m_nOutCount = outCount;
 }
 
 unsigned short ScoreBoard::getStrikeCount() const
 {
-    //Todo: Return m_nStrikeCount to the value of a parameter
+    return m_nStrikeCount;
 }
 
 unsigned short ScoreBoard::getBallCount() const
 {
-    //Todo: Return m_nBallCount to the value of a parameter
+    return m_nBallCount;
 }
 
 unsigned short ScoreBoard::getHitsCount() const
 {
-    //Todo: Return m_nHitsCount to the value of a parameter
+    return m_nHitsCount;
 }
 
 unsigned short ScoreBoard::getOutCount() const
 {
-    //Todo: Return m_nOutCount to the value of a parameter
+    return m_nOutCount;
 }
