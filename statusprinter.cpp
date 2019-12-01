@@ -33,12 +33,13 @@ void StatusPrinter::showPitchingResult(unsigned short strike,
 
 void StatusPrinter::showScoreBoard(unsigned short strikeCount, unsigned short ballCount, unsigned short outCount)
 {
-    std::cout << strikeCount << "S " << ballCount << "B " << outCount << "O" << std::endl;
+    std::cout << strikeCount << "S " << ballCount << "B " << outCount << "O"
+              << std::endl << std::endl;
 }
 
 void StatusPrinter::showNextBatter()
 {
-    std::cout << "다음 타자가 타석에 입장했습니다." << std::endl;
+    std::cout << " 다음 타자가 타석에 입장했습니다." << std::endl;
 }
 
 void StatusPrinter::showGameEndComment(unsigned short hitsCount)
@@ -49,7 +50,7 @@ void StatusPrinter::showGameEndComment(unsigned short hitsCount)
 
 void StatusPrinter::showStrikeOccurs(unsigned short strike)
 {
-    std::cout << "스트라이크!" << std::endl;
+    std::cout << "스트라이크!";
 
     if ( 3 == ++strike )
     {
@@ -58,7 +59,7 @@ void StatusPrinter::showStrikeOccurs(unsigned short strike)
 }
 void StatusPrinter::showBallOccurs(unsigned short ball)
 {
-    std::cout << "볼!" << std::endl;
+    std::cout << "볼!";
 
     if ( 4 == ++ball )
     {
@@ -78,10 +79,10 @@ void StatusPrinter::showOutOccurs()
 
 void StatusPrinter::showThreeStrikeOutOccursComment()
 {
-    std::cout << "아웃! (삼진)";
+    std::cout << std::endl << "아웃! (삼진)";
 }
 
 void StatusPrinter::showFourBallHitsOccursComment()
 {
-    std::cout << "안타! (4볼)";
+    std::cout << std::endl << "안타! (4볼)";
 }

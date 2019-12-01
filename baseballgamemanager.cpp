@@ -30,7 +30,7 @@ BaseballGameManager::~BaseballGameManager()
 void BaseballGameManager::startGame()
 {
     std::cout << "신나는 야구 게임!" << std::endl;
-    std::cout << "첫번째 타자가 입장하였습니다." << std::endl;
+    std::cout << "첫번째 타자가 입장하였습니다." << std::endl << std::endl;
 
     while ( false == isGameEnd(m_pScoreBoard->getOutCount()) ) {
         playInning();
@@ -51,6 +51,9 @@ void BaseballGameManager::playInning()
 
     if ( (true == bEndTheAtBat ) && (false == isGameEnd(m_pScoreBoard->getOutCount())) ) {
         m_pStatusPrinter->showNextBatter();
+    }
+    else {
+        std::cout << std::endl;
     }
 
     m_pStatusPrinter->showScoreBoard(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), m_pScoreBoard->getOutCount());
