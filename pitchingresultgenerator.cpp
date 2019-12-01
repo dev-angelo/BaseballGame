@@ -1,9 +1,12 @@
 #include "pitchingresultgenerator.h"
 #include "pitchingresult.h"
 
+#include <cstdlib>
+#include <ctime>
+
 PitchingResultGenerator::PitchingResultGenerator()
 {
-
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
 PitchingResultGenerator::~PitchingResultGenerator()
@@ -13,7 +16,9 @@ PitchingResultGenerator::~PitchingResultGenerator()
 
 PitchingResult PitchingResultGenerator::generatePitchingResult()
 {
-    //Todo: Implementation to randomly generate pitching results
+    int nRandomNumber = std::rand() % 4;
 
-    return PitchingResult::STRIKE;
+    PitchingResult ePitchingResult = static_cast<PitchingResult>(nRandomNumber);
+
+    return ePitchingResult;
 }
