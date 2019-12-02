@@ -43,7 +43,8 @@ public:
      *
      * @param hitsCount Number of hits when the match ends.
      */
-    void showGameEndComment(unsigned short hitsCount);
+    void showGameEndComment(std::string homeTeamName, std::string awayTeamName,
+                            unsigned short homeTeamScore, unsigned short awayTeamScore);
 
     void showBatterEnter(unsigned short batterNumber, std::string batterName);
     void showAttackTeam(std::string teamName);

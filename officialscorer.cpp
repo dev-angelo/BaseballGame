@@ -34,11 +34,17 @@ bool OfficialScorer::calculatePitchingResult(PitchingResult pitchingResult)
     return bEndAtTheBat;
 }
 
-void OfficialScorer::clearSBO()
+void OfficialScorer::clearSBHO()
 {
     m_pScoreBoard->setStrikeCount(0);
     m_pScoreBoard->setBallCount(0);
+    m_pScoreBoard->setHitsCount(0);
     m_pScoreBoard->setOutCount(0);
+}
+
+void OfficialScorer::setIsCurrentHomeTeam(const bool isCurrentHomeTeam)
+{
+    m_bIsCurrentHomeTeam = isCurrentHomeTeam;
 }
 
 bool OfficialScorer::calculateStrikeOccurs()
@@ -63,15 +69,10 @@ bool OfficialScorer::calculateStrikeOccurs()
 bool OfficialScorer::calculateBallOccurs()
 {
     bool bEndAtTheBat = false;
-    unsigned short nBallCount = m_pScoreBoard->getBallCount();
-    m_pScoreBoard->setBallCount(++nBallCount);
+    m_pScoreBoard->setBallCount(m_pScoreBoard->getBallCount() + 1);
 
-    if ( static_cast<unsigned short>(SBMaximumCount::FOUR_BALL) == nBallCount ) {
-        m_pScoreBoard->setStrikeCount(0);
-        m_pScoreBoard->setBallCount(0);
-
-        unsigned short nHitsCount = m_pScoreBoard->getHitsCount();
-        m_pScoreBoard->setHitsCount(++nHitsCount);
+    if ( static_cast<unsigned short>(SBMaximumCount::FOUR_BALL) == m_pScoreBoard->getBallCount() ) {
+        handleSBHOFourBallOccurs();
 
         bEndAtTheBat = true;
     }
@@ -84,7 +85,11 @@ bool OfficialScorer::calculateHitOccurs()
     bool bEndAtTheBat = true;
 
     unsigned short nHitsCount = m_pScoreBoard->getHitsCount();
+    m_pScoreBoard->setScore(m_pScoreBoard->getScore(true) + (m_pScoreBoard->getHitsCount() + 1) / 4, getIsCurrentHomeTeam());
     m_pScoreBoard->setHitsCount(++nHitsCount);
+
+    if ( 4 == m_pScoreBoard->getHitsCount() )
+        m_pScoreBoard->setHitsCount(0);
 
     m_pScoreBoard->setStrikeCount(0);
     m_pScoreBoard->setBallCount(0);
@@ -103,4 +108,19 @@ bool OfficialScorer::calculateOutOccurs()
     m_pScoreBoard->setBallCount(0);
 
     return bEndAtTheBat;
+}
+
+bool OfficialScorer::getIsCurrentHomeTeam() const
+{
+    return m_bIsCurrentHomeTeam;
+}
+
+void OfficialScorer::handleSBHOFourBallOccurs()
+{
+    m_pScoreBoard->setStrikeCount(0);   m_pScoreBoard->setBallCount(0);
+    m_pScoreBoard->setScore(m_pScoreBoard->getScore(true) + (m_pScoreBoard->getHitsCount() + 1) / 4, getIsCurrentHomeTeam());
+    m_pScoreBoard->setHitsCount(m_pScoreBoard->getHitsCount() + 1);
+
+    if ( 4 == m_pScoreBoard->getHitsCount())
+        m_pScoreBoard->setHitsCount(0);
 }

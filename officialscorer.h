@@ -20,18 +20,20 @@ public:
      */
     bool calculatePitchingResult(PitchingResult pitchingResult);
 
-    void clearSBO();
+    void clearSBHO();
+    void setIsCurrentHomeTeam(const bool isCurrentHomeTeam);
 
 private:
     ScoreBoard* m_pScoreBoard;
+    bool m_bIsCurrentHomeTeam;
 
     /**
-     * Calculate sbo count when strike occurs
+     * Calculate strike count when strike occurs
      */
     bool calculateStrikeOccurs();
 
     /**
-     * Calculate sbo count when ball occurs
+     * Calculate ball count when ball occurs
      */
     bool calculateBallOccurs();
 
@@ -41,9 +43,13 @@ private:
     bool calculateHitOccurs();
 
     /**
-     * Calculate sbo count when out occurs
+     * Calculate out count when out occurs
      */
     bool calculateOutOccurs();
+
+    bool getIsCurrentHomeTeam() const;
+
+    void handleSBHOFourBallOccurs();
 };
 
 #endif // OFFICIALSCORER_H

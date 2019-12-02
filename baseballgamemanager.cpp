@@ -124,17 +124,19 @@ void BaseballGameManager::startGame()
 {
     unsigned short nCurrentInning = 0;
 
-    while ( 13 > nCurrentInning )
-    {
-        m_pCurrentAttackTeam = (nCurrentInning % 2 == 0) ? m_pHomeTeam : m_pAwayTeam;
+    while ( 12 > nCurrentInning ) {
+        m_pCurrentAttackTeam = ((nCurrentInning + 1) % 2 == 1) ? m_pHomeTeam : m_pAwayTeam;
+        m_pOfficialScorer->setIsCurrentHomeTeam(((nCurrentInning + 1) % 2 == 1) ? true : false);
         m_pStatusPrinter->showInningTopBottom(nCurrentInning);
         m_pStatusPrinter->showAttackTeam(m_pCurrentAttackTeam->getName());
 
         playInning(m_pCurrentAttackTeam);
         ++nCurrentInning;
 
-        m_pOfficialScorer->clearSBO();
+        m_pOfficialScorer->clearSBHO();
     }
+
+    m_pStatusPrinter->showGameEndComment(m_pHomeTeam->getName(), m_pAwayTeam->getName(), m_pScoreBoard->getScore(true), m_pScoreBoard->getScore(false));
 }
 
 bool BaseballGameManager::playAttack(float battingAverage)

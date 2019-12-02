@@ -40,11 +40,14 @@ public:
      */
     unsigned short getOutCount() const;
 
+    unsigned short getScore(bool isHomeTeam);
+
 private:
     unsigned short m_nStrikeCount;
     unsigned short m_nBallCount;
     unsigned short m_nHitsCount;
     unsigned short m_nOutCount;
+    unsigned short m_lScore[2];
 
     /**
      * Set ScoreBoard's strike count value
@@ -73,6 +76,8 @@ private:
      * @param outCount for ScoreBoard's out count.
      */
     void setOutCount(const unsigned short outCount);
+
+    void setScore(const unsigned short score, const bool isHomeTeam);
 };
 
 #endif // SCOREBOARD_H

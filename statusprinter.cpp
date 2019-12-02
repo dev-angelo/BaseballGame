@@ -42,10 +42,13 @@ void StatusPrinter::showNextBatter()
     std::cout << " 다음 타자가 타석에 입장했습니다." << std::endl;
 }
 
-void StatusPrinter::showGameEndComment(unsigned short hitsCount)
+void StatusPrinter::showGameEndComment(std::string homeTeamName, std::string awayTeamName,
+                                       unsigned short homeTeamScore, unsigned short awayTeamScore)
 {
-    std::cout << "최종 안타수 : " << hitsCount << std::endl;
-    std::cout << "GAME OVER" << std::endl;
+    std::cout << "경기 종료 : " << std::endl;
+    std::cout << homeTeamName << " VS " << awayTeamName << std::endl;
+    std::cout << homeTeamScore << " : " << awayTeamScore << std::endl;
+    std::cout << "Thank you!";
 }
 
 void StatusPrinter::showStrikeOccurs(unsigned short strike)
