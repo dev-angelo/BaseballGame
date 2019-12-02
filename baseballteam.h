@@ -15,8 +15,8 @@ public:
      */
     std::string getName() const;
 
-    double getMemberBattingAverage(unsigned short memberIndex);
-    std::string getMemberName(unsigned short memberIndex);
+    double getMemberBattingAverage(const unsigned short memberIndex) const;
+    std::string getMemberName(const unsigned short memberIndex) const;
 
     /**
      * Input team and team member information from user.
@@ -44,17 +44,17 @@ private:
     /**
      * Input team name from user.
      */
-    std::string receiveTeamName();
+    std::string receiveTeamName() const;
 
     /**
      * Input member name and member batting average.
      */
-    std::vector<std::string> receiveTeamMemberInformation();
+    std::vector<std::string> receiveTeamMemberInformation() const;
 
     /**
      * Parse to separate a string consisting of (Tom, 0.35) etc. by comma
      */
-    std::vector<std::string> parseTeamMemberInformation(std::string buffer);
+    std::vector<std::string> parseTeamMemberInformation(const std::string buffer) const;
 
     /**
      * Append member
@@ -62,12 +62,12 @@ private:
      * @param battingAverage Member's batting average (ex. 0.325)
      *
      */
-    void appendMember(std::string name, double battingAverage);
+    void appendMember(const std::string name, const double battingAverage);
 
-    bool checkUserInputAvailable(std::string userInput);
-    unsigned short getContainsCharacterCount(std::string userInput, std::string delimiter);
-    bool checkIsExceptionNotOccur(std::string userInput);
-    bool checkIsBattingAverageInRange(double battingAverage);
+    bool checkUserInputAvailable(const std::string userInput) const;
+    unsigned short getContainsCharacterCount(const std::string userInput, const std::string delimiter) const;
+    bool checkIsExceptionNotOccur(const std::string userInput) const;
+    bool checkIsBattingAverageInRange(const double battingAverage) const;
 };
 
 #endif // BASEBALLTEAM_H

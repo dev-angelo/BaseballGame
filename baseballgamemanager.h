@@ -42,7 +42,7 @@ private:
      * @param outCount Number of out.
      * @return finished (true) or not finished (false).
      */
-    bool isGameEnd(unsigned short outCount);
+    bool isGameEnd(const unsigned short outCount) const;
 
     /**
      * Show baseball game menu.
@@ -52,16 +52,16 @@ private:
     /**
      * Receive user's menu select input.
      */
-    unsigned short receiveUserMenuSelect();
+    unsigned short receiveUserMenuSelect() const;
 
     /**
      * Perform the menu selected by user.
      */
-    void performUserMenuSelection(unsigned short userInput);
-    bool checkUserMenuSelectionAvailable(unsigned short userInput);
+    void performUserMenuSelection(const unsigned short userInput);
+    bool checkUserMenuSelectionAvailable(const unsigned short userInput) const;
 
     void startGame();
-    bool playAttack(double battingAverage);
+    bool playAttack(const double battingAverage) const;
 }
 ;
 

@@ -52,7 +52,7 @@ void BaseballGameManager::run()
     }
 }
 
-bool BaseballGameManager::isGameEnd(unsigned short outCount)
+bool BaseballGameManager::isGameEnd(const unsigned short outCount) const
 {
     bool result = false;
 
@@ -79,7 +79,7 @@ void BaseballGameManager::showMenu()
     std::cout << "메뉴선택 (1 - 3) : ";
 }
 
-unsigned short BaseballGameManager::receiveUserMenuSelect()
+unsigned short BaseballGameManager::receiveUserMenuSelect() const
 {
     unsigned short userInput = 0;
     std::cin >> userInput;
@@ -90,7 +90,7 @@ unsigned short BaseballGameManager::receiveUserMenuSelect()
     return userInput;
 }
 
-void BaseballGameManager::performUserMenuSelection(unsigned short userInput)
+void BaseballGameManager::performUserMenuSelection(const unsigned short userInput)
 {
     if ( 1 == userInput ) {
         m_pHomeTeam->inputTeamData();   m_pAwayTeam->inputTeamData();
@@ -103,7 +103,7 @@ void BaseballGameManager::performUserMenuSelection(unsigned short userInput)
     }
 }
 
-bool BaseballGameManager::checkUserMenuSelectionAvailable(unsigned short userInput)
+bool BaseballGameManager::checkUserMenuSelectionAvailable(const unsigned short userInput) const
 {
     bool result = false;
 
@@ -139,7 +139,7 @@ void BaseballGameManager::startGame()
     m_pStatusPrinter->showGameEndComment(m_pHomeTeam->getName(), m_pAwayTeam->getName(), m_pScoreBoard->getScore(true), m_pScoreBoard->getScore(false));
 }
 
-bool BaseballGameManager::playAttack(double battingAverage)
+bool BaseballGameManager::playAttack(const double battingAverage) const
 {
     bool bEndTheAtBat = false;
 

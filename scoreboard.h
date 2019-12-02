@@ -40,7 +40,7 @@ public:
      */
     unsigned short getOutCount() const;
 
-    unsigned short getScore(bool isHomeTeam);
+    unsigned short getScore(const bool isHomeTeam) const;
 
 private:
     unsigned short m_nStrikeCount;

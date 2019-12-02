@@ -65,7 +65,7 @@ unsigned short ScoreBoard::getOutCount() const
     return m_nOutCount;
 }
 
-unsigned short ScoreBoard::getScore(bool isHomeTeam)
+unsigned short ScoreBoard::getScore(const bool isHomeTeam) const
 {
     unsigned short nScore = 0;
 

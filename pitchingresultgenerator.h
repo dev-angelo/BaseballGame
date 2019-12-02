@@ -15,13 +15,13 @@ public:
      *
      * @return Result of pitching. (please refer to pitchingresult.h)
      */
-    PitchingResult generatePitchingResult(double battingAverage);
-    PitchingResult determinePitchingType(int generatedRamdomNumber,
-                                         int outValue,
-                                         int battingValue,
-                                         int strikeValue,
-                                         int ballValue,
-                                         int pivotValue);
+    PitchingResult generatePitchingResult(const double battingAverage) const;
+    PitchingResult determinePitchingType(const int generatedRamdomNumber,
+                                         const int outValue,
+                                         const int battingValue,
+                                         const int strikeValue,
+                                         const int ballValue,
+                                         const int pivotValue) const;
 };
 
 #endif // PITCHINGRESULTGENERATOR_H

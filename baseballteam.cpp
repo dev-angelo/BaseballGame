@@ -30,7 +30,7 @@ std::string BaseballTeam::getName() const
     return m_strName;
 }
 
-double BaseballTeam::getMemberBattingAverage(unsigned short memberIndex)
+double BaseballTeam::getMemberBattingAverage(const unsigned short memberIndex) const
 {
     double fBattingAverage = 0;
 
@@ -44,7 +44,7 @@ double BaseballTeam::getMemberBattingAverage(unsigned short memberIndex)
     return fBattingAverage;
 }
 
-std::string BaseballTeam::getMemberName(unsigned short memberIndex)
+std::string BaseballTeam::getMemberName(const unsigned short memberIndex) const
 {
     std::string strName;
 
@@ -74,7 +74,7 @@ void BaseballTeam::inputTeamData()
     std::cout << std::endl;
 }
 
-std::string BaseballTeam::receiveTeamName()
+std::string BaseballTeam::receiveTeamName() const
 {
     std::string strTeamName;
     std::getline(std::cin, strTeamName);
@@ -82,7 +82,7 @@ std::string BaseballTeam::receiveTeamName()
     return strTeamName;
 }
 
-std::vector<std::string> BaseballTeam::receiveTeamMemberInformation()
+std::vector<std::string> BaseballTeam::receiveTeamMemberInformation() const
 {
     std::vector<std::string> memberInformation;
     std::string strBuffer = "";
@@ -101,7 +101,7 @@ std::vector<std::string> BaseballTeam::receiveTeamMemberInformation()
     return memberInformation;
 }
 
-std::vector<std::string> BaseballTeam::parseTeamMemberInformation(std::string buffer)
+std::vector<std::string> BaseballTeam::parseTeamMemberInformation(const std::string buffer) const
 {
     int count = 0;
     std::string strData;
@@ -116,13 +116,13 @@ std::vector<std::string> BaseballTeam::parseTeamMemberInformation(std::string bu
     return memberInformation;
 }
 
-void BaseballTeam::appendMember(std::string name, double battingAverage)
+void BaseballTeam::appendMember(const std::string name, const double battingAverage)
 {
     m_lMemberName.push_back(name);
     m_lMemberBattingAverage.push_back(battingAverage);
 }
 
-bool BaseballTeam::checkUserInputAvailable(std::string userInput)
+bool BaseballTeam::checkUserInputAvailable(const std::string userInput) const
 {
     bool bIsAvailable = false;
     std::vector<std::string> memberInformation;
@@ -140,7 +140,7 @@ bool BaseballTeam::checkUserInputAvailable(std::string userInput)
     return bIsAvailable;
 }
 
-unsigned short BaseballTeam::getContainsCharacterCount(std::string userInput, std::string delimiter)
+unsigned short BaseballTeam::getContainsCharacterCount(const std::string userInput, const std::string delimiter) const
 {
     unsigned short occurrences = 0;
 
@@ -154,7 +154,7 @@ unsigned short BaseballTeam::getContainsCharacterCount(std::string userInput, st
     return occurrences;
 }
 
-bool BaseballTeam::checkIsExceptionNotOccur(std::string userInput)
+bool BaseballTeam::checkIsExceptionNotOccur(const std::string userInput) const
 {
     bool result = true;
 
@@ -171,7 +171,7 @@ bool BaseballTeam::checkIsExceptionNotOccur(std::string userInput)
     return result;
 }
 
-bool BaseballTeam::checkIsBattingAverageInRange(double battingAverage)
+bool BaseballTeam::checkIsBattingAverageInRange(const double battingAverage) const
 {
     bool result = false;
 

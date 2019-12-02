@@ -18,9 +18,9 @@ public:
      * @param ball Current Number of ball
      * @param pitchingResult Result of pitching. (please refer to pitchingresult.h)
      */
-    void showPitchingResult(unsigned short strike,
-                            unsigned short ball,
-                            PitchingResult pitchingResult);
+    void showPitchingResult(const unsigned short strike,
+                            const unsigned short ball,
+                            const PitchingResult pitchingResult);
 
     /**
      * Print current score board in console.
@@ -29,9 +29,9 @@ public:
      * @param ballCount Current number of Ball.
      * @param outCount Current number of Out.
      */
-    void showScoreBoard(unsigned short strikeCount,
-                        unsigned short ballCount,
-                        unsigned short outCount);
+    void showScoreBoard(const unsigned short strikeCount,
+                        const unsigned short ballCount,
+                        const unsigned short outCount);
 
     /**
      * Print the next batter in console.
@@ -43,12 +43,12 @@ public:
      *
      * @param hitsCount Number of hits when the match ends.
      */
-    void showGameEndComment(std::string homeTeamName, std::string awayTeamName,
-                            unsigned short homeTeamScore, unsigned short awayTeamScore);
+    void showGameEndComment(const std::string homeTeamName, const std::string awayTeamName,
+                            const unsigned short homeTeamScore, const unsigned short awayTeamScore);
 
-    void showBatterEnter(unsigned short batterNumber, std::string batterName);
-    void showAttackTeam(std::string teamName);
-    void showInningTopBottom(unsigned short inning);
+    void showBatterEnter(const unsigned short batterNumber, const std::string batterName);
+    void showAttackTeam(const std::string teamName);
+    void showInningTopBottom(const unsigned short inning);
 
 private:
     /**
@@ -57,7 +57,7 @@ private:
      *
      * @param strikeCount Current number of Strike.
      */
-    void showStrikeOccurs(unsigned short strike);
+    void showStrikeOccurs(const unsigned short strike);
 
     /**
      * Print ball comment in console
@@ -65,7 +65,7 @@ private:
      *
      * @param ballCount Current number of Ball.
      */
-    void showBallOccurs(unsigned short ball);
+    void showBallOccurs(const unsigned short ball);
 
     /**
      * Print hits comment in console.

@@ -14,7 +14,7 @@ OfficialScorer::~OfficialScorer()
 
 }
 
-bool OfficialScorer::calculatePitchingResult(PitchingResult pitchingResult)
+bool OfficialScorer::calculatePitchingResult(const PitchingResult pitchingResult) const
 {
     bool bEndAtTheBat = false;
     if ( PitchingResult::STRIKE == pitchingResult ) {
@@ -46,7 +46,7 @@ void OfficialScorer::setIsCurrentHomeTeam(const bool isCurrentHomeTeam)
     m_bIsCurrentHomeTeam = isCurrentHomeTeam;
 }
 
-bool OfficialScorer::calculateStrikeOccurs()
+bool OfficialScorer::calculateStrikeOccurs() const
 {
     bool bEndAtTheBat = false;
     unsigned short nStrikeCount = m_pScoreBoard->getStrikeCount();
@@ -65,7 +65,7 @@ bool OfficialScorer::calculateStrikeOccurs()
     return bEndAtTheBat;
 }
 
-bool OfficialScorer::calculateBallOccurs()
+bool OfficialScorer::calculateBallOccurs() const
 {
     bool bEndAtTheBat = false;
     m_pScoreBoard->setBallCount(m_pScoreBoard->getBallCount() + 1);
@@ -79,7 +79,7 @@ bool OfficialScorer::calculateBallOccurs()
     return bEndAtTheBat;
 }
 
-bool OfficialScorer::calculateHitOccurs()
+bool OfficialScorer::calculateHitOccurs() const
 {
     bool bEndAtTheBat = true;
 
@@ -96,7 +96,7 @@ bool OfficialScorer::calculateHitOccurs()
     return bEndAtTheBat;
 }
 
-bool OfficialScorer::calculateOutOccurs()
+bool OfficialScorer::calculateOutOccurs() const
 {
     bool bEndAtTheBat = true;
 
@@ -114,7 +114,7 @@ bool OfficialScorer::getIsCurrentHomeTeam() const
     return m_bIsCurrentHomeTeam;
 }
 
-void OfficialScorer::handleSBHOFourBallOccurs()
+void OfficialScorer::handleSBHOFourBallOccurs() const
 {
     m_pScoreBoard->setStrikeCount(0);   m_pScoreBoard->setBallCount(0);
     m_pScoreBoard->setScore(m_pScoreBoard->getScore(getIsCurrentHomeTeam()) + (m_pScoreBoard->getHitsCount() + 1) / 4, getIsCurrentHomeTeam());

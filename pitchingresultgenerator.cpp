@@ -14,7 +14,7 @@ PitchingResultGenerator::~PitchingResultGenerator()
 
 }
 
-PitchingResult PitchingResultGenerator::generatePitchingResult(double battingAverage)
+PitchingResult PitchingResultGenerator::generatePitchingResult(const double battingAverage) const
 {
     int nStrikeValue = static_cast<int>(((1 - battingAverage)/2 - 0.035)*10000);
     int nBallValue = static_cast<int>(((1 - battingAverage)/2 - 0.035)*10000);
@@ -28,7 +28,12 @@ PitchingResult PitchingResultGenerator::generatePitchingResult(double battingAve
     return ePitchingResult;
 }
 
-PitchingResult PitchingResultGenerator::determinePitchingType(int generatedRamdomNumber, int outValue, int battingValue, int strikeValue, int ballValue, int pivotValue)
+PitchingResult PitchingResultGenerator::determinePitchingType(const int generatedRamdomNumber,
+                                                              const int outValue,
+                                                              const int battingValue,
+                                                              const int strikeValue,
+                                                              const int ballValue,
+                                                              const int pivotValue) const
 {
     PitchingResult ePitchingResult = PitchingResult::STRIKE;
 

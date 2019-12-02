@@ -18,7 +18,7 @@ public:
      * @param pitchingResult
      * @return If out occurs or on base (true), else (false)
      */
-    bool calculatePitchingResult(PitchingResult pitchingResult);
+    bool calculatePitchingResult(const PitchingResult pitchingResult) const;
 
     void clearSBHO();
     void setIsCurrentHomeTeam(const bool isCurrentHomeTeam);
@@ -30,26 +30,26 @@ private:
     /**
      * Calculate strike count when strike occurs
      */
-    bool calculateStrikeOccurs();
+    bool calculateStrikeOccurs() const;
 
     /**
      * Calculate ball count when ball occurs
      */
-    bool calculateBallOccurs();
+    bool calculateBallOccurs() const;
 
     /**
      * Calculate hits count when hits occurs
      */
-    bool calculateHitOccurs();
+    bool calculateHitOccurs() const;
 
     /**
      * Calculate out count when out occurs
      */
-    bool calculateOutOccurs();
+    bool calculateOutOccurs() const;
 
     bool getIsCurrentHomeTeam() const;
 
-    void handleSBHOFourBallOccurs();
+    void handleSBHOFourBallOccurs() const;
 };
 
 #endif // OFFICIALSCORER_H
