@@ -15,7 +15,7 @@ public:
      */
     std::string getName() const;
 
-    float getMemberBattingAverage(unsigned short memberIndex);
+    double getMemberBattingAverage(unsigned short memberIndex);
     std::string getMemberName(unsigned short memberIndex);
 
     /**
@@ -31,7 +31,7 @@ public:
 private:
     std::string m_strName;
     std::vector<std::string> m_lMemberName;
-    std::vector<float> m_lMemberBattingAverage;
+    std::vector<double> m_lMemberBattingAverage;
     unsigned short m_nNumber;
 
     static unsigned short objectCount;
@@ -62,12 +62,12 @@ private:
      * @param battingAverage Member's batting average (ex. 0.325)
      *
      */
-    void appendMember(std::string name, float battingAverage);
+    void appendMember(std::string name, double battingAverage);
 
     bool checkUserInputAvailable(std::string userInput);
     unsigned short getContainsCharacterCount(std::string userInput, std::string delimiter);
     bool checkIsExceptionNotOccur(std::string userInput);
-    bool checkIsBattingAverageInRange(float battingAverage);
+    bool checkIsBattingAverageInRange(double battingAverage);
 };
 
 #endif // BASEBALLTEAM_H

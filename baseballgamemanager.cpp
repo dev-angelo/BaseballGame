@@ -139,7 +139,7 @@ void BaseballGameManager::startGame()
     m_pStatusPrinter->showGameEndComment(m_pHomeTeam->getName(), m_pAwayTeam->getName(), m_pScoreBoard->getScore(true), m_pScoreBoard->getScore(false));
 }
 
-bool BaseballGameManager::playAttack(float battingAverage)
+bool BaseballGameManager::playAttack(double battingAverage)
 {
     bool bEndTheAtBat = false;
 

@@ -30,9 +30,9 @@ std::string BaseballTeam::getName() const
     return m_strName;
 }
 
-float BaseballTeam::getMemberBattingAverage(unsigned short memberIndex)
+double BaseballTeam::getMemberBattingAverage(unsigned short memberIndex)
 {
-    float fBattingAverage = 0;
+    double fBattingAverage = 0;
 
     if ( m_lMemberBattingAverage.size() < memberIndex ) {
         fBattingAverage = 0;
@@ -69,7 +69,7 @@ void BaseballTeam::inputTeamData()
     for ( int index = 0 ; index < 9 ; ++index ) {
         std::cout << index + 1 << "번 타자 정보 입력> ";
         std::vector<std::string> memberInformation = receiveTeamMemberInformation();
-        appendMember(memberInformation.at(0), std::stof(memberInformation.at(1)));
+        appendMember(memberInformation.at(0), std::stod(memberInformation.at(1)));
     }
     std::cout << std::endl;
 }
@@ -116,7 +116,7 @@ std::vector<std::string> BaseballTeam::parseTeamMemberInformation(std::string bu
     return memberInformation;
 }
 
-void BaseballTeam::appendMember(std::string name, float battingAverage)
+void BaseballTeam::appendMember(std::string name, double battingAverage)
 {
     m_lMemberName.push_back(name);
     m_lMemberBattingAverage.push_back(battingAverage);
@@ -131,7 +131,7 @@ bool BaseballTeam::checkUserInputAvailable(std::string userInput)
     if ( 1 == commaCount ) {
         memberInformation = parseTeamMemberInformation(userInput);
 
-        if ( true == checkIsExceptionNotOccur(memberInformation.at(1)) && true == checkIsBattingAverageInRange(std::stof(memberInformation.at(1))))
+        if ( true == checkIsExceptionNotOccur(memberInformation.at(1)) && true == checkIsBattingAverageInRange(std::stod(memberInformation.at(1))))
             bIsAvailable = true;
     }
     else
@@ -159,7 +159,7 @@ bool BaseballTeam::checkIsExceptionNotOccur(std::string userInput)
     bool result = true;
 
     try {
-        std::stof(userInput);
+        std::stod(userInput);
     }
     catch (std::invalid_argument) {
         result = false;
@@ -171,12 +171,12 @@ bool BaseballTeam::checkIsExceptionNotOccur(std::string userInput)
     return result;
 }
 
-bool BaseballTeam::checkIsBattingAverageInRange(float battingAverage)
+bool BaseballTeam::checkIsBattingAverageInRange(double battingAverage)
 {
     bool result = false;
 
-    if ( (static_cast<float>(0.1) < battingAverage) &&
-         (static_cast<float>(0.5) > battingAverage) ) {
+    if ( (static_cast<double>(0.1) < battingAverage) &&
+         (static_cast<double>(0.5) > battingAverage) ) {
         result = true;
     }
     else {

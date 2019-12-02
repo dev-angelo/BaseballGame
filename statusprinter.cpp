@@ -48,7 +48,7 @@ void StatusPrinter::showGameEndComment(std::string homeTeamName, std::string awa
     std::cout << "경기 종료 : " << std::endl;
     std::cout << homeTeamName << " VS " << awayTeamName << std::endl;
     std::cout << homeTeamScore << " : " << awayTeamScore << std::endl;
-    std::cout << "Thank you!";
+    std::cout << "Thank you!" << std::endl;
 }
 
 void StatusPrinter::showStrikeOccurs(unsigned short strike)

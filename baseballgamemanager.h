@@ -61,7 +61,7 @@ private:
     bool checkUserMenuSelectionAvailable(unsigned short userInput);
 
     void startGame();
-    bool playAttack(float battingAverage);
+    bool playAttack(double battingAverage);
 }
 ;
 
