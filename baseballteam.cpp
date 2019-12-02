@@ -43,9 +43,7 @@ void BaseballTeam::inputTeamData()
 std::string BaseballTeam::receiveTeamName()
 {
     std::string strTeamName;
-
-    std::cout << m_nNumber << "팀의 이름을 입력하세요> ";
-    std::cin >> strTeamName;
+    std::getline(std::cin, strTeamName);
 
     return strTeamName;
 }
@@ -55,7 +53,8 @@ std::vector<std::string> BaseballTeam::receiveTeamMemberInformation()
     std::vector<std::string> memberInformation;
 
     std::string strBuffer;
-    std::cin >> strBuffer;
+
+    std::getline(std::cin, strBuffer);
     memberInformation = parseTeamMemberInformation(strBuffer);
 
     return memberInformation;
@@ -87,7 +86,7 @@ void BaseballTeam::showTeamData()
 
     for ( std::vector<int>::size_type index = 0 ; index < 9 ; ++index )
     {
-        std::cout << index + 1 << " 번 " << m_lMember.at(index).getName() << ", "
+        std::cout << index + 1 << "번 " << m_lMember.at(index).getName() << ", "
                   << m_lMember.at(index).getBattingAverage() << std::endl;
     }
 }
