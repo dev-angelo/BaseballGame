@@ -39,9 +39,20 @@ private:
      */
     void setName(const std::string name);
 
+    /**
+     * Input team name from user.
+     */
     std::string receiveTeamName();
+
+    /**
+     * Input member name and member batting average.
+     */
     std::vector<std::string> receiveTeamMemberInformation();
-    std::vector<std::string> parseTeamMemberInformation(std::string teamInformation);
+
+    /**
+     * Parse to separate a string consisting of (Tom, 0.35) etc. by comma
+     */
+    std::vector<std::string> parseTeamMemberInformation(std::string buffer);
 
     /**
      * Append member
