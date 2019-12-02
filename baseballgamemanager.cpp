@@ -39,12 +39,16 @@ void BaseballGameManager::run()
     std::cout << "신나는 야구 게임!" << std::endl;
 
     unsigned short selectedMenu = 0;
+    bool bIsUserSelectionAvailable = false;
 
-    while ( 5 != selectedMenu )
-    {
+    while ( (3 != selectedMenu) || (false == bIsUserSelectionAvailable) ) {
         showMenu();
         selectedMenu = receiveUserMenuSelect();
-        performUserMenuSelection(selectedMenu);
+
+        bIsUserSelectionAvailable = checkUserMenuSelectionAvailable(selectedMenu);
+
+        if ( true == bIsUserSelectionAvailable )
+            performUserMenuSelection(selectedMenu);
     }
 }
 
@@ -66,11 +70,13 @@ bool BaseballGameManager::isGameEnd(unsigned short outCount)
 
 void BaseballGameManager::showMenu()
 {
+    std::cout << std::endl;
+
     std::cout << "1. 데이터 입력" << std::endl;
     std::cout << "2. 데이터 출력" << std::endl;
     std::cout << "3. 시합 시작" << std::endl << std::endl;
 
-    std::cout << "메뉴선택 (1 - 2) : ";
+    std::cout << "메뉴선택 (1 - 3) : ";
 }
 
 unsigned short BaseballGameManager::receiveUserMenuSelect()
@@ -87,16 +93,31 @@ unsigned short BaseballGameManager::receiveUserMenuSelect()
 void BaseballGameManager::performUserMenuSelection(unsigned short userInput)
 {
     if ( 1 == userInput ) {
-        m_pHomeTeam->inputTeamData();   std::cout << std::endl;
-        m_pAwayTeam->inputTeamData();
+        m_pHomeTeam->inputTeamData();   m_pAwayTeam->inputTeamData();
     }
     else if ( 2 == userInput ) {
-        m_pHomeTeam->showTeamData();    std::cout << std::endl;
-        m_pAwayTeam->showTeamData();
+        m_pHomeTeam->showTeamData();    m_pAwayTeam->showTeamData();
     }
     else {
         startGame();
     }
+}
+
+bool BaseballGameManager::checkUserMenuSelectionAvailable(unsigned short userInput)
+{
+    bool result = false;
+
+    if ( ((2 == userInput) || (3 == userInput)) && (true == m_pHomeTeam->getName().empty()) ) {
+        std:: cout << "팀 정보를 입력하세요." << std::endl;
+    }
+    else if ( (3 < userInput) || (1 > userInput) ) {
+        std::cout << "올바르지 않은 번호입니다." << std::endl;
+    }
+    else {
+        result = true;
+    }
+
+    return result;
 }
 
 void BaseballGameManager::startGame()

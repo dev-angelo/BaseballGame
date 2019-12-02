@@ -58,6 +58,7 @@ private:
      * Perform the menu selected by user.
      */
     void performUserMenuSelection(unsigned short userInput);
+    bool checkUserMenuSelectionAvailable(unsigned short userInput);
 
     void startGame();
     bool playAttack(float battingAverage);

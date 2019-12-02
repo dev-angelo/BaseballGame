@@ -60,16 +60,18 @@ std::string BaseballTeam::getMemberName(unsigned short memberIndex)
 
 void BaseballTeam::inputTeamData()
 {
+    std::cout << std::endl;
     std::cout << m_nNumber + 1 << "팀의 이름을 입력하세요> ";
     std::string strTeamName = receiveTeamName();
     setName(strTeamName);
 
-    std::cout << std::endl << "타자 정보 입력 (ex. 타이거, 0.3)" << std::endl;
+    std::cout << std::endl << "타자 정보 입력 (이름, 타율 -> ex. 타이거, 0.35) : 0.1 < 타율 < 0.5" << std::endl;
     for ( int index = 0 ; index < 9 ; ++index ) {
         std::cout << index + 1 << "번 타자 정보 입력> ";
         std::vector<std::string> memberInformation = receiveTeamMemberInformation();
         appendMember(memberInformation.at(0), std::stof(memberInformation.at(1)));
     }
+    std::cout << std::endl;
 }
 
 std::string BaseballTeam::receiveTeamName()
@@ -83,17 +85,17 @@ std::string BaseballTeam::receiveTeamName()
 std::vector<std::string> BaseballTeam::receiveTeamMemberInformation()
 {
     std::vector<std::string> memberInformation;
-    std::string strBuffer = ""; bool bIsErrorNotOccurs = false;
+    std::string strBuffer = "";
 
-    while ( false == checkUserInputAvailable(strBuffer) || false == bIsErrorNotOccurs ) {
+    while ( false == checkUserInputAvailable(strBuffer) ) {
         std::getline(std::cin, strBuffer);
 
         if ( true == checkUserInputAvailable(strBuffer) ) {
             memberInformation = parseTeamMemberInformation(strBuffer);
-            bIsErrorNotOccurs = checkIsExceptionNotOccur(memberInformation.at(1));
         }
-        if ( false == checkUserInputAvailable(strBuffer) || false == bIsErrorNotOccurs )
+        else {
             std::cout << "올바른 팀원 정보를 입력해주세요." << std::endl;
+        }
     }
 
     return memberInformation;
@@ -123,14 +125,17 @@ void BaseballTeam::appendMember(std::string name, float battingAverage)
 bool BaseballTeam::checkUserInputAvailable(std::string userInput)
 {
     bool bIsAvailable = false;
+    std::vector<std::string> memberInformation;
     unsigned short commaCount = getContainsCharacterCount(userInput, ",");
 
     if ( 1 == commaCount ) {
-        bIsAvailable = true;
+        memberInformation = parseTeamMemberInformation(userInput);
+
+        if ( true == checkIsExceptionNotOccur(memberInformation.at(1)) && true == checkIsBattingAverageInRange(std::stof(memberInformation.at(1))))
+            bIsAvailable = true;
     }
-    else {
+    else
         bIsAvailable = false;
-    }
 
     return bIsAvailable;
 }
@@ -160,6 +165,21 @@ bool BaseballTeam::checkIsExceptionNotOccur(std::string userInput)
         result = false;
     }
     catch (std::out_of_range) {
+        result = false;
+    }
+
+    return result;
+}
+
+bool BaseballTeam::checkIsBattingAverageInRange(float battingAverage)
+{
+    bool result = false;
+
+    if ( (static_cast<float>(0.1) < battingAverage) &&
+         (static_cast<float>(0.5) > battingAverage) ) {
+        result = true;
+    }
+    else {
         result = false;
     }
 

@@ -67,6 +67,7 @@ private:
     bool checkUserInputAvailable(std::string userInput);
     unsigned short getContainsCharacterCount(std::string userInput, std::string delimiter);
     bool checkIsExceptionNotOccur(std::string userInput);
+    bool checkIsBattingAverageInRange(float battingAverage);
 };
 
 #endif // BASEBALLTEAM_H
