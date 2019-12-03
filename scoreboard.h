@@ -54,8 +54,9 @@ private:
     unsigned short m_nBallCount;
     unsigned short m_nHitsCount;
     unsigned short m_nOutCount;
-    unsigned short m_lHomeTeamScore[6];
-    unsigned short m_lAwayTeamScore[6];
+
+    unsigned short m_lTeamScore[2][6];
+
 
     /**
      * Set ScoreBoard's strike count value
