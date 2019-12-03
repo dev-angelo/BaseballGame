@@ -31,14 +31,6 @@ void StatusPrinter::showPitchingResult(const unsigned short strike,
     }
 }
 
-void StatusPrinter::showScoreBoard(const unsigned short strikeCount,
-                                   const unsigned short ballCount,
-                                   const unsigned short outCount)
-{
-    std::cout << strikeCount << "S " << ballCount << "B " << outCount << "O"
-              << std::endl << std::endl;
-}
-
 void StatusPrinter::showNextBatter()
 {
     std::cout << " 다음 타자가 타석에 입장했습니다." << std::endl;

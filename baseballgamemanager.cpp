@@ -149,7 +149,7 @@ bool BaseballGameManager::playAttack(const double battingAverage) const
 
         m_pStatusPrinter->showPitchingResult(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), pitchResult);
         bEndTheAtBat = m_pOfficialScorer->calculatePitchingResult(pitchResult);
-        m_pStatusPrinter->showScoreBoard(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), m_pScoreBoard->getOutCount());
+        m_pScoreBoard->showScoreBoard();
 
         if ( true == bEndTheAtBat )
             break;

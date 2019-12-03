@@ -1,4 +1,5 @@
 #include "scoreboard.h"
+#include <iostream>
 
 ScoreBoard::ScoreBoard() :
     m_nStrikeCount(0),
@@ -96,6 +97,12 @@ unsigned short ScoreBoard::getTeamScore(const unsigned short inning, const bool 
     }
 
     return nScore;
+}
+
+void ScoreBoard::showScoreBoard()
+{
+    std::cout << getStrikeCount() << "S " << getBallCount() << "B " << getOutCount() << "O"
+              << std::endl << std::endl;
 }
 
 void ScoreBoard::initTeamScore()

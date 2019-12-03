@@ -49,6 +49,15 @@ public:
     unsigned short getTeamScore(const bool isHomeTeam) const;
     unsigned short getTeamScore(const unsigned short inning, const bool isHomeTeam) const;
 
+    /**
+     * Print current score board in console.
+     *
+     * @param strikeCount Current number of Strike.
+     * @param ballCount Current number of Ball.
+     * @param outCount Current number of Out.
+     */
+    void showScoreBoard();
+
 private:
     unsigned short m_nStrikeCount;
     unsigned short m_nBallCount;
