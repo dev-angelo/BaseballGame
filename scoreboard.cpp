@@ -37,7 +37,7 @@ void ScoreBoard::setOutCount(const unsigned short outCount)
     m_nOutCount = outCount;
 }
 
-void ScoreBoard::setScore(const unsigned short score,
+void ScoreBoard::setTeamScore(const unsigned short score,
                           const unsigned short inning,
                           const bool isHomeTeam)
 {
@@ -71,7 +71,7 @@ unsigned short ScoreBoard::getOutCount() const
     return m_nOutCount;
 }
 
-unsigned short ScoreBoard::getScore(const bool isHomeTeam) const
+unsigned short ScoreBoard::getTeamScore(const bool isHomeTeam) const
 {
     unsigned short nScore = 0;
     const unsigned short* pCurrentTeamScore = (isHomeTeam == true) ? m_lTeamScore[0] : m_lTeamScore[1];
@@ -83,7 +83,7 @@ unsigned short ScoreBoard::getScore(const bool isHomeTeam) const
     return nScore;
 }
 
-unsigned short ScoreBoard::getScore(const unsigned short inning, const bool isHomeTeam) const
+unsigned short ScoreBoard::getTeamScore(const unsigned short inning, const bool isHomeTeam) const
 {
     unsigned short nScore = 0;
     unsigned short nCvtInning = (inning / 2);

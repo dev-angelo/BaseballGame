@@ -90,7 +90,7 @@ bool OfficialScorer::calculateHitOccurs() const
     bool bEndAtTheBat = true;
 
     unsigned short nHitsCount = m_pScoreBoard->getHitsCount();
-    m_pScoreBoard->setScore(m_pScoreBoard->getScore(getCurrentInning(), getIsCurrentHomeTeam()) + (m_pScoreBoard->getHitsCount() + 1) / 4,
+    m_pScoreBoard->setTeamScore(m_pScoreBoard->getTeamScore(getCurrentInning(), getIsCurrentHomeTeam()) + (m_pScoreBoard->getHitsCount() + 1) / 4,
                             getCurrentInning(),
                             getIsCurrentHomeTeam());
     m_pScoreBoard->setHitsCount(++nHitsCount);
@@ -125,7 +125,7 @@ bool OfficialScorer::getIsCurrentHomeTeam() const
 void OfficialScorer::handleSBHOFourBallOccurs() const
 {
     m_pScoreBoard->setStrikeCount(0);   m_pScoreBoard->setBallCount(0);
-    m_pScoreBoard->setScore(m_pScoreBoard->getScore(getCurrentInning(), getIsCurrentHomeTeam()) + (m_pScoreBoard->getHitsCount() + 1) / 4,
+    m_pScoreBoard->setTeamScore(m_pScoreBoard->getTeamScore(getCurrentInning(), getIsCurrentHomeTeam()) + (m_pScoreBoard->getHitsCount() + 1) / 4,
                             getCurrentInning(),
                             getIsCurrentHomeTeam());
     m_pScoreBoard->setHitsCount(m_pScoreBoard->getHitsCount() + 1);

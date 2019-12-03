@@ -136,7 +136,7 @@ void BaseballGameManager::startGame()
         m_pOfficialScorer->clearSBHO();
     }
 
-    m_pStatusPrinter->showGameEndComment(m_pHomeTeam->getName(), m_pAwayTeam->getName(), m_pScoreBoard->getScore(true), m_pScoreBoard->getScore(false));
+    m_pStatusPrinter->showGameEndComment(m_pHomeTeam->getName(), m_pAwayTeam->getName(), m_pScoreBoard->getTeamScore(true), m_pScoreBoard->getTeamScore(false));
 }
 
 bool BaseballGameManager::playAttack(const double battingAverage) const

@@ -46,8 +46,8 @@ public:
      * @param isHomeTeam Indicates whether or not it is the home team.
      * @return score.
      */
-    unsigned short getScore(const bool isHomeTeam) const;
-    unsigned short getScore(const unsigned short inning, const bool isHomeTeam) const;
+    unsigned short getTeamScore(const bool isHomeTeam) const;
+    unsigned short getTeamScore(const unsigned short inning, const bool isHomeTeam) const;
 
 private:
     unsigned short m_nStrikeCount;
@@ -100,7 +100,7 @@ private:
      * @param score Score to be saved
      * @param isHomeTeam Indicates whether or not it is the home team.
      */
-    void setScore(const unsigned short score, const unsigned short inning, const bool isHomeTeam);
+    void setTeamScore(const unsigned short score, const unsigned short inning, const bool isHomeTeam);
 };
 
 #endif // SCOREBOARD_H
