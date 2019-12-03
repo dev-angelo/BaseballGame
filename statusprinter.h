@@ -34,11 +34,6 @@ public:
                         const unsigned short outCount);
 
     /**
-     * Print the next batter in console.
-     */
-    void showNextBatter();
-
-    /**
      * Print game end comment in console.
      *
      * @param hitsCount Number of hits when the match ends.
@@ -54,12 +49,6 @@ public:
      */
     void showBatterEnter(const unsigned short batterNumber, const std::string batterName);
 
-    /**
-     * Print the team to attack
-     *
-     * @param teamName Team name of the attacking position
-     */
-    void showAttackTeam(const unsigned short inning, const std::string teamName);
 
 private:
     /**

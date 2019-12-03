@@ -39,11 +39,6 @@ void StatusPrinter::showCurrentSBO(const unsigned short strikeCount,
               << std::endl << std::endl;
 }
 
-void StatusPrinter::showNextBatter()
-{
-    std::cout << " 다음 타자가 타석에 입장했습니다." << std::endl;
-}
-
 void StatusPrinter::showGameEndComment(const std::string homeTeamName,
                                        const std::string awayTeamName,
                                        const unsigned short homeTeamScore,
@@ -101,13 +96,4 @@ void StatusPrinter::showFourBallHitsOccursComment()
 void StatusPrinter::showBatterEnter(const unsigned short batterNumber, const std::string batterName)
 {
     std::cout << batterNumber + 1 << "번 " << batterName << std::endl;
-}
-
-void StatusPrinter::showAttackTeam(const unsigned short inning, const std::string teamName)
-{
-    bool bIsTop = (inning + 1) % 2;
-
-    std::cout << (inning / 2) + 1 << "회" << (true == bIsTop ? "초" : "말") << " ";
-
-    std::cout << teamName << "의 공격" << std::endl;
 }

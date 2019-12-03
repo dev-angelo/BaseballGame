@@ -5,7 +5,9 @@ ScoreBoard::ScoreBoard() :
     m_nStrikeCount(0),
     m_nBallCount(0),
     m_nHitsCount(0),
-    m_nOutCount(0)
+    m_nOutCount(0),
+    m_bIsCurrentHomeTeam(false),
+    m_nCurrentInning(0)
 {
     initTeamScore();
     initTeamPitchingCount();
@@ -174,8 +176,96 @@ unsigned short ScoreBoard::getTeamHitsCount(const bool isHomeTeam) const
 
 void ScoreBoard::showScoreBoard()
 {
-    std::cout << getStrikeCount() << "S " << getBallCount() << "B " << getOutCount() << "O"
-              << std::endl << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "+---------------------------------+" << std::endl;
+    showCurrentInning();
+    std::cout << "+---------------------------------+" << std::endl;
+    showTitle();
+    showTeamScore();
+    showTeamName();
+    showTeamMemberName();
+    showTeamPitchingAndStrikeCount();
+    showTeamThreeStrikeAndBallCount();
+    showTeamHitsAndOutCount();
+
+    std::cout << "-----------------------------------" << std::endl;
+}
+
+void ScoreBoard::showTitle()
+{
+    std::cout << "|";
+    std::cout << "1 2 3 4 5 6  | TOT" << std::endl;
+}
+
+void ScoreBoard::showTeamScore()
+{
+    for ( std::vector<int>::size_type index = 0 ; index < 2 ; ++index ) {
+        std::cout << "|" << " " << m_lTeamName[index] << "\t";
+
+        for ( int inning = 0 ; inning < 6 ; ++inning ) {
+            std::cout << m_lTeamScore[index][inning] << " ";
+        }
+
+        std::cout << std::endl;
+    }
+}
+
+void ScoreBoard::showTeamName()
+{
+    std::cout << "|" << std::endl;
+    std::cout << "|";
+    std::cout << m_lTeamName[0] << " " << m_lTeamName[1] << std::endl;
+}
+
+void ScoreBoard::showTeamMemberName()
+{
+    for ( std::vector<int>::size_type index = 0 ; index < 9 ; ++index ) {
+        std::cout << "|";
+        std::cout << m_lTeamMemberName[0][index] << " " << m_lTeamMemberName[1][index] << std::endl;
+    }
+}
+
+void ScoreBoard::showTeamPitchingAndStrikeCount()
+{
+    std::cout << "|";
+    std::cout << "투구: " << getTeamPitchingCount(m_bIsCurrentHomeTeam) << "\t"
+              << "S: " << getStrikeCount()
+              << std::endl;
+}
+
+void ScoreBoard::showTeamThreeStrikeAndBallCount()
+{
+    std::cout << "|";
+    std::cout << "삼진: " << getTeamThreeOutCount(m_bIsCurrentHomeTeam) << "\t"
+              << "B: " << getBallCount()
+              << std::endl;
+}
+
+void ScoreBoard::showTeamHitsAndOutCount()
+{
+    std::cout << "|";
+    std::cout << "안타: " << getTeamHitsCount(m_bIsCurrentHomeTeam) << "\t"
+              << "O: " << getOutCount()
+              << std::endl;
+}
+
+void ScoreBoard::showCurrentInning()
+{
+    bool bIsTop = m_nCurrentInning % 2;
+
+    std::cout << (m_nCurrentInning / 2) + 1 << "회" << (false == bIsTop ? "초" : "말") << " ";
+    std::cout << m_lTeamName[bIsTop] << "의 공격" << std::endl;
+}
+
+void ScoreBoard::setIsCurrentHomeTeam(const bool isCurrentHomeTeam)
+{
+    m_bIsCurrentHomeTeam = isCurrentHomeTeam;
+}
+
+void ScoreBoard::setCurrentInning(const unsigned short currentInning)
+{
+    m_nCurrentInning = currentInning;
 }
 
 void ScoreBoard::initTeamScore()

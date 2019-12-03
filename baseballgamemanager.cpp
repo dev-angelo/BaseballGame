@@ -52,7 +52,7 @@ void BaseballGameManager::run()
     }
 }
 
-bool BaseballGameManager::isGameEnd(const unsigned short outCount) const
+bool BaseballGameManager::isInningEnd(const unsigned short outCount) const
 {
     bool result = false;
 
@@ -149,12 +149,13 @@ void BaseballGameManager::startGame()
     unsigned short nCurrentInning = 0;
 
     while ( 12 > nCurrentInning ) {
-        m_pOfficialScorer->setCurrentInning(nCurrentInning);
         m_pCurrentAttackTeam = ((nCurrentInning + 1) % 2 == 1) ? m_pHomeTeam : m_pAwayTeam;
+        m_pOfficialScorer->setCurrentInning(nCurrentInning);
         m_pOfficialScorer->setIsCurrentHomeTeam(((nCurrentInning + 1) % 2 == 1) ? true : false);
-        m_pStatusPrinter->showAttackTeam(nCurrentInning, m_pCurrentAttackTeam->getName());
+        m_pScoreBoard->setIsCurrentHomeTeam(((nCurrentInning + 1) % 2 == 1) ? true : false);
+        m_pScoreBoard->setCurrentInning(nCurrentInning);
 
-        playInning(m_pCurrentAttackTeam);
+        playInning();
         ++nCurrentInning;
 
         m_pOfficialScorer->clearSBHO();
@@ -163,33 +164,46 @@ void BaseballGameManager::startGame()
     m_pStatusPrinter->showGameEndComment(m_pHomeTeam->getName(), m_pAwayTeam->getName(), m_pScoreBoard->getTeamScore(true), m_pScoreBoard->getTeamScore(false));
 }
 
-bool BaseballGameManager::playAttack(const double battingAverage) const
+bool BaseballGameManager::playAttack(const unsigned short nCurrentBatterIndex) const
 {
     bool bEndTheAtBat = false;
+    std::string strTeamName = "";
 
-    while ( false == bEndTheAtBat ) {
-        PitchingResult pitchResult = m_pPitchingResultGenerator->generatePitchingResult(battingAverage);
-        m_pStatusPrinter->showPitchingResult(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), pitchResult);
-        bEndTheAtBat = m_pOfficialScorer->calculatePitchingResult(pitchResult);
-        m_pStatusPrinter->showCurrentSBO(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), m_pScoreBoard->getOutCount());
-        m_pOfficialScorer->increaseTeamPitchingCount();
+    m_pScoreBoard->showScoreBoard();
+    m_pStatusPrinter->showBatterEnter(nCurrentBatterIndex, m_pCurrentAttackTeam->getMemberName(nCurrentBatterIndex));
+    bEndTheAtBat = doPitching(nCurrentBatterIndex);
 
-        if ( true == bEndTheAtBat )
-            break;
-    }
+    std::cout << "다음 투구 보기(enter) or 스킵하고 X회말 후 투구보기(숫자+enter) ? ";
+    std::getline(std::cin, strTeamName);
 
     return bEndTheAtBat;
 }
 
-void BaseballGameManager::playInning(BaseballTeam* pBaseballTeam)
+bool BaseballGameManager::doPitching(const unsigned short nCurrentBatterIndex) const
+{
+    bool bEndTheAtBat = false;
+
+    PitchingResult pitchResult = m_pPitchingResultGenerator->generatePitchingResult(m_pCurrentAttackTeam->getMemberBattingAverage(nCurrentBatterIndex));
+
+    m_pStatusPrinter->showPitchingResult(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), pitchResult);
+
+    bEndTheAtBat = m_pOfficialScorer->calculatePitchingResult(pitchResult);
+
+    m_pStatusPrinter->showCurrentSBO(m_pScoreBoard->getStrikeCount(), m_pScoreBoard->getBallCount(), m_pScoreBoard->getOutCount());
+
+    m_pOfficialScorer->increaseTeamPitchingCount();
+
+    return bEndTheAtBat;
+}
+
+void BaseballGameManager::playInning()
 {
     unsigned short nCurrentBatterIndex = 0;
     bool bEndTheAtBat = false;
 
-    while ( false == isGameEnd(m_pScoreBoard->getOutCount()) )
+    while ( false == isInningEnd(m_pScoreBoard->getOutCount()) )
     {
-        m_pStatusPrinter->showBatterEnter(nCurrentBatterIndex, pBaseballTeam->getMemberName(nCurrentBatterIndex));
-        bEndTheAtBat = playAttack(pBaseballTeam->getMemberBattingAverage(nCurrentBatterIndex));
+        bEndTheAtBat = playAttack(nCurrentBatterIndex);
 
         if ( true == bEndTheAtBat ) {
             nCurrentBatterIndex = (nCurrentBatterIndex + 1) % 9;

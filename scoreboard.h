@@ -56,23 +56,21 @@ public:
     unsigned short getTeamThreeOutCount(const bool isHomeTeam) const;
     unsigned short getTeamHitsCount(const bool isHomeTeam) const;
 
-    /**
-     * Print current score board in console.
-     *
-     * @param strikeCount Current number of Strike.
-     * @param ballCount Current number of Ball.
-     * @param outCount Current number of Out.
-     */
-    void showScoreBoard();
-
     void setTeamName(std::vector<std::string> teamName);
     void setTeamMemberName(const std::vector<std::vector<std::string>> teamMemberName);
+
+    void showScoreBoard();
+
+    void setIsCurrentHomeTeam(const bool isCurrentHomeTeam);
+    void setCurrentInning(const unsigned short currentInning);
 
 private:
     unsigned short m_nStrikeCount;
     unsigned short m_nBallCount;
     unsigned short m_nHitsCount;
     unsigned short m_nOutCount;
+    bool m_bIsCurrentHomeTeam;
+    unsigned short m_nCurrentInning;
 
     unsigned short m_lTeamScore[2][6];
     unsigned short m_lTeamPitchingCount[2];
@@ -127,6 +125,15 @@ private:
     void setTeamPitchingCount(const unsigned short pitchingCount, const bool isHomeTeam);
     void setTeamThreeOutCount(const unsigned short threeOutCount, const bool isHomeTeam);
     void setTeamHitsCount(const unsigned short hitsCount, const bool isHomeTeam);
+
+    void showTitle();
+    void showTeamScore();
+    void showTeamName();
+    void showTeamMemberName();
+    void showTeamPitchingAndStrikeCount();
+    void showTeamThreeStrikeAndBallCount();
+    void showTeamHitsAndOutCount();
+    void showCurrentInning();
 };
 
 #endif // SCOREBOARD_H

@@ -34,7 +34,7 @@ private:
      * Play one inning.
      *
      */
-    void playInning(BaseballTeam* pBaseballTeam);
+    void playInning();
 
     /**
      * Determine whether the game is finished through outCount.
@@ -42,7 +42,7 @@ private:
      * @param outCount Number of out.
      * @return finished (true) or not finished (false).
      */
-    bool isGameEnd(const unsigned short outCount) const;
+    bool isInningEnd(const unsigned short outCount) const;
 
     /**
      * Show baseball game menu.
@@ -65,7 +65,8 @@ private:
     bool checkUserMenuSelectionAvailable(const unsigned short userInput) const;
 
     void startGame();
-    bool playAttack(const double battingAverage) const;
+    bool playAttack(const unsigned short nCurrentBatterIndex) const;
+    bool doPitching(const unsigned short nCurrentBatterIndex) const;
 }
 ;
 
