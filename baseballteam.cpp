@@ -78,10 +78,10 @@ std::string BaseballTeam::receiveTeamName() const
 {
     std::string strTeamName = "";
 
-    while ( true == strTeamName.empty() ) {
+    while ( true == checkIsStringEmpty(strTeamName) ) {
         std::getline(std::cin, strTeamName);
 
-        if ( true == strTeamName.empty() )
+        if ( true == checkIsStringEmpty(strTeamName) )
             std::cout << "팀 명을 입력해주세요. >";
     }
 
@@ -137,7 +137,8 @@ bool BaseballTeam::checkUserInputAvailable(const std::string userInput) const
     if ( 1 == commaCount ) {
         memberInformation = parseTeamMemberInformation(userInput);
 
-        if ( true == checkIsExceptionNotOccur(memberInformation.at(1)) && true == checkIsBattingAverageInRange(std::stod(memberInformation.at(1))))
+        if ( memberInformation.size() == 2 && false == checkIsStringEmpty(memberInformation.at(0)) && false == checkIsStringEmpty(memberInformation.at(1)) &&
+            true == checkIsExceptionNotOccur(memberInformation.at(1)) && true == checkIsBattingAverageInRange(std::stod(memberInformation.at(1))))
             bIsAvailable = true;
     }
     else
@@ -188,6 +189,19 @@ bool BaseballTeam::checkIsBattingAverageInRange(const double battingAverage) con
     else {
         result = false;
     }
+
+    return result;
+}
+
+bool BaseballTeam::checkIsStringEmpty(const std::string string) const
+{
+    bool result = false;
+
+    if ( true == string.empty() )
+        result = true;
+
+    if ( true == (string.find_first_not_of(' ') == std::string::npos) )
+        result = true;
 
     return result;
 }
