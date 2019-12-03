@@ -49,6 +49,10 @@ public:
     unsigned short getTeamScore(const bool isHomeTeam) const;
     unsigned short getTeamScore(const unsigned short inning, const bool isHomeTeam) const;
 
+    unsigned short getTeamPitchingCount(const bool isHomeTeam) const;
+    unsigned short getTeamThreeOutCount(const bool isHomeTeam) const;
+    unsigned short getTeamHitsCount(const bool isHomeTeam) const;
+
     /**
      * Print current score board in console.
      *
@@ -110,6 +114,10 @@ private:
      * @param isHomeTeam Indicates whether or not it is the home team.
      */
     void setTeamScore(const unsigned short score, const unsigned short inning, const bool isHomeTeam);
+
+    void setTeamPitchingCount(const unsigned short pitchingCount, const bool isHomeTeam);
+    void setTeamThreeOutCount(const unsigned short threeOutCount, const bool isHomeTeam);
+    void setTeamHitsCount(const unsigned short hitsCount, const bool isHomeTeam);
 };
 
 #endif // SCOREBOARD_H
