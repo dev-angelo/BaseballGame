@@ -17,6 +17,7 @@ public:
 
     double getMemberBattingAverage(const unsigned short memberIndex) const;
     std::string getMemberName(const unsigned short memberIndex) const;
+    std::vector<std::string> getMemberName() const;
 
     /**
      * Input team and team member information from user.

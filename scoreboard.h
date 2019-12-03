@@ -1,6 +1,9 @@
 #ifndef SCOREBOARD_H
 #define SCOREBOARD_H
 
+#include <vector>
+#include <iostream>
+
 class OfficialScorer;
 
 class ScoreBoard
@@ -62,6 +65,9 @@ public:
      */
     void showScoreBoard();
 
+    void setTeamName(std::vector<std::string> teamName);
+    void setTeamMemberName(const std::vector<std::vector<std::string>> teamMemberName);
+
 private:
     unsigned short m_nStrikeCount;
     unsigned short m_nBallCount;
@@ -72,6 +78,9 @@ private:
     unsigned short m_lTeamPitchingCount[2];
     unsigned short m_lTeamThreeOutCount[2];
     unsigned short m_lTeamHitsCount[2];
+
+    std::vector<std::string> m_lTeamName;
+    std::vector<std::vector<std::string>> m_lTeamMemberName;
 
     void initTeamScore();
     void initTeamPitchingCount();

@@ -1,8 +1,6 @@
 #ifndef OFFICIALSCORER_H
 #define OFFICIALSCORER_H
 
-#include <map>
-
 class ScoreBoard;
 enum class PitchingResult;
 

@@ -93,14 +93,38 @@ unsigned short BaseballGameManager::receiveUserMenuSelect() const
 void BaseballGameManager::performUserMenuSelection(const unsigned short userInput)
 {
     if ( 1 == userInput ) {
-        m_pHomeTeam->inputTeamData();   m_pAwayTeam->inputTeamData();
+        performInputTeamData();
     }
     else if ( 2 == userInput ) {
-        m_pHomeTeam->showTeamData();    m_pAwayTeam->showTeamData();
+        performShowTeamData();
     }
     else {
         startGame();
     }
+}
+
+void BaseballGameManager::performInputTeamData()
+{
+    std::vector<std::string> lTeamName;
+    std::vector<std::vector<std::string>> lMemberName;
+
+    m_pHomeTeam->inputTeamData();
+    m_pAwayTeam->inputTeamData();
+
+    lTeamName.push_back(m_pHomeTeam->getName());
+    lTeamName.push_back(m_pAwayTeam->getName());
+
+    lMemberName.push_back(m_pHomeTeam->getMemberName());
+    lMemberName.push_back(m_pAwayTeam->getMemberName());
+
+    m_pScoreBoard->setTeamName(lTeamName);
+    m_pScoreBoard->setTeamMemberName(lMemberName);
+}
+
+void BaseballGameManager::performShowTeamData()
+{
+    m_pHomeTeam->showTeamData();
+    m_pAwayTeam->showTeamData();
 }
 
 bool BaseballGameManager::checkUserMenuSelectionAvailable(const unsigned short userInput) const

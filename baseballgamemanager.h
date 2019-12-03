@@ -58,6 +58,10 @@ private:
      * Perform the menu selected by user.
      */
     void performUserMenuSelection(const unsigned short userInput);
+
+    void performInputTeamData();
+    void performShowTeamData();
+
     bool checkUserMenuSelectionAvailable(const unsigned short userInput) const;
 
     void startGame();

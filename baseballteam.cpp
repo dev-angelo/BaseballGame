@@ -58,6 +58,11 @@ std::string BaseballTeam::getMemberName(const unsigned short memberIndex) const
     return strName;
 }
 
+std::vector<std::string> BaseballTeam::getMemberName() const
+{
+    return m_lMemberName;
+}
+
 void BaseballTeam::inputTeamData()
 {
     std::cout << std::endl;

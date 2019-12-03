@@ -11,6 +11,9 @@ ScoreBoard::ScoreBoard() :
     initTeamPitchingCount();
     initTeamThreeOutCount();
     initTeamHitsCount();
+
+    m_lTeamName.clear();
+    m_lTeamMemberName.clear();
 }
 
 ScoreBoard::~ScoreBoard()
@@ -74,6 +77,16 @@ void ScoreBoard::setTeamHitsCount(const unsigned short hitsCount, const bool isH
         m_lTeamHitsCount[0] = hitsCount;
     else
         m_lTeamHitsCount[1] = hitsCount;
+}
+
+void ScoreBoard::setTeamName(std::vector<std::string> teamName)
+{
+    m_lTeamName = teamName;
+}
+
+void ScoreBoard::setTeamMemberName(const std::vector<std::vector<std::string>> teamMemberName)
+{
+    m_lTeamMemberName = teamMemberName;
 }
 
 unsigned short ScoreBoard::getStrikeCount() const
