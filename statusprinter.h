@@ -23,6 +23,17 @@ public:
                             const PitchingResult pitchingResult);
 
     /**
+     * Print current score board in console.
+     *
+     * @param strikeCount Current number of Strike.
+     * @param ballCount Current number of Ball.
+     * @param outCount Current number of Out.
+     */
+    void showCurrentSBO(const unsigned short strikeCount,
+                        const unsigned short ballCount,
+                        const unsigned short outCount);
+
+    /**
      * Print the next batter in console.
      */
     void showNextBatter();
