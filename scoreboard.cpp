@@ -113,10 +113,7 @@ void ScoreBoard::initTeamPitchingCount()
 {
     for ( int teamIndex = 0 ; teamIndex < 2 ; ++teamIndex )
     {
-        for ( int memberIndex = 0 ; memberIndex < 6 ; ++memberIndex )
-        {
-            m_lTeamPitchingCount[teamIndex][memberIndex] = 0;
-        }
+        m_lTeamPitchingCount[teamIndex] = 0;
     }
 }
 
@@ -124,10 +121,7 @@ void ScoreBoard::initTeamThreeOutCount()
 {
     for ( int teamIndex = 0 ; teamIndex < 2 ; ++teamIndex )
     {
-        for ( int memberIndex = 0 ; memberIndex < 6 ; ++memberIndex )
-        {
-            m_lTeamThreeOutCount[teamIndex][memberIndex] = 0;
-        }
+        m_lTeamThreeOutCount[teamIndex] = 0;
     }
 }
 
@@ -135,9 +129,6 @@ void ScoreBoard::initTeamHitsCount()
 {
     for ( int teamIndex = 0 ; teamIndex < 2 ; ++teamIndex )
     {
-        for ( int memberIndex = 0 ; memberIndex < 6 ; ++memberIndex )
-        {
-            m_lTeamHitsCount[teamIndex][memberIndex] = 0;
-        }
+        m_lTeamHitsCount[teamIndex] = 0;
     }
 }
