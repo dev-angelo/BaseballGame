@@ -67,3 +67,7 @@ bool OfficialScorer::calculateOutOccurs()
 ### StatusPrinter Class
 Console 창에 경기 상태에 대한 내용을 사용자에게 알려주기 위한 class 이다.  
 ![StatusPrinter](https://user-images.githubusercontent.com/58318174/70122836-aec08b80-16b4-11ea-814e-87352ae8f29b.png)
+
+## SequenceDiagram
+BaseballGame step-1 동작에 대한 개략적인 flow.  
+![SequenceDiagram_step-1](https://user-images.githubusercontent.com/58318174/70133249-0f59c380-16c9-11ea-8c93-ef544c4a32bd.png)
