@@ -15,16 +15,16 @@ step-1 의 시나리오를 만족하기 위한 flow 가 구현 되는 class 이�
 ### OfficialScorer Class
 PitchingResultGenerator 클래스로부터 생성 된 투구 결과를 토대로 ScoreBoard 의 값을 조작하는 class 이다.  
 조작하는 값은 아래와 같다.  
-* Strike 를 전달 받았을 때
-** ScoreBoard 객체의 Strike Count 를 1 증가시킨다.
-*** ScoreBoard 의 Strike Count 를 1 증가시킨 후의 값이 3 이면 Strike/Ball Count 를 0 으로 만들고 Out Count 를 1 증가시킨다.
-* Ball 을 전달 받았을 때
-** ScoreBoard 의 Ball Count 를 1 증가시킨다.
-*** ScoreBoard 의 Ball Count 를 1 증가시킨 후의 값이 4 면 Strike/Ball Count 를 0 으로 만들고 Hits Count 를 1 증가시킨다.
-* Hits Count 를 전달 받았을 때
-** ScoreBoard 의 Hits Count 를 1 증가시킨 후 Strike/Ball Count 를 0 으로 만든다.
-* Out Count 을 전달 받았을 때
-** ScoreBoard 의 Out Count 를 1 증가시킨다.
+* Strike 를 전달 받았을 때  
+** ScoreBoard 객체의 Strike Count 를 1 증가시킨다.  
+*** ScoreBoard 의 Strike Count 를 1 증가시킨 후의 값이 3 이면 Strike/Ball Count 를 0 으로 만들고 Out Count 를 1 증가시킨다.  
+* Ball 을 전달 받았을 때  
+** ScoreBoard 의 Ball Count 를 1 증가시킨다.  
+*** ScoreBoard 의 Ball Count 를 1 증가시킨 후의 값이 4 면 Strike/Ball Count 를 0 으로 만들고 Hits Count 를 1 증가시킨다.  
+* Hits Count 를 전달 받았을 때  
+** ScoreBoard 의 Hits Count 를 1 증가시킨 후 Strike/Ball Count 를 0 으로 만든다.  
+* Out Count 을 전달 받았을 때  
+** ScoreBoard 의 Out Count 를 1 증가시킨다.  
 ### ScoreBoard Class
 경기중 상태 (Strike/Ball/Out) 및 안타 (Hits) 수를 저장하고 있는 class 이다.  
 저장되는 값은 아래와 같다.
